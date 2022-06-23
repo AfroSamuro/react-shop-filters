@@ -1,50 +1,76 @@
+import { useState } from 'react'
+import Card from '../card/Card'
+import Filter from '../filter/Filter'
 import './MainContent.css'
 
-export default function MainContent() {
+export default function MainContent(props) {
 
+    const { metaData } = props;
 
+    const [data, setData] = useState(metaData);
+    const [filterResult, setFilterResult] = useState(data);
+
+    const [isSelectedAll, setIsSelectedAll] = useState(false)
+    const [isSelectedDesign, setIsSelectedDesign] = useState(false)
+    const [isSelectedBrand, setIsSelectedBrand] = useState(false)
+    const [isSelectedIllus, setIsSelectedIllus] = useState(false)
+    const [isSelectedMotion, setIsSelectedMotion] = useState(false)
+
+    const filterItems = (e) => {
+
+        if (e.target.value === 'Show All') {
+            setFilterResult(data);
+            setIsSelectedAll(!isSelectedAll)
+        }
+        if (e.target.value === 'Design') {
+            setFilterResult(data.filter(item => item.filter === e.target.value))
+            setIsSelectedDesign(!isSelectedDesign)
+        }
+        if (e.target.value === 'Branding') {
+            setFilterResult(data.filter(item => item.filter === e.target.value))
+            setIsSelectedBrand(!isSelectedBrand)
+        }
+        if (e.target.value === 'Illustration') {
+            setFilterResult(data.filter(item => item.filter === e.target.value))
+            setIsSelectedIllus(!isSelectedIllus)
+        }
+        if (e.target.value === 'Motion') {
+            setFilterResult(data.filter(item => item.filter === e.target.value))
+            setIsSelectedMotion(!isSelectedMotion)
+        }
+    }
+
+    const deleteCard = (e) => {
+        const id = e.target.getAttribute('id');
+        setFilterResult(filterResult.filter(item => item.id !== id))
+        // console.log(id)
+        // console.log(filterResult)
+        // console.log(filterResult.filter(item => item.id === id))
+    }
 
     return (
         <article className='content'>
-            <nav className='content__nav'>
-                <select className='nav__select'>
-                    <option value="all">
-                        Show All
-                    </option>
-                    <option value="design">
-                        Design
-                    </option>
-                    <option value="branding">
-                        Branding
-                    </option>
-                    <option value="illustration">
-                        Illustration
-                    </option>
-                    <option value="motion">
-                        Motion
-                    </option>
-                </select>
+            <Filter
+                data={data}
+                param={filterItems}
+                isSelectedAll={isSelectedAll}
+                isSelectedBrand={isSelectedBrand}
+                isSelectedDesign={isSelectedDesign}
+                isSelectedIllus={isSelectedIllus}
+                isSelectedMotion={isSelectedMotion}
+            />
 
-                <div className='nav__box'>
-                    <p className='all'>
-                        Show All
-                    </p>
-                    <p className='design'>
-                        Design
-                    </p>
-                    <p className='branding'>
-                        Branding
-                    </p>
-                    <p className='illustration'>
-                        Illustration
-                    </p>
-                    <p className='motion'>
-                        Motion
-                    </p>
-                </div>
-            </nav>
             <main className='content__product'>
-                
+                <div className='product__cards'>
+                    {filterResult.map(card =>
+                        <Card data={card} param={filterItems} remove={deleteCard} key={card.id}/>
+                    )}
+                </div>
+                <div className='product__more'>
+                    <button className='more__button'>
+                        LOAD MORE
+                    </button>
+                </div>
             </main>
         </article>
     )

@@ -1,0 +1,70 @@
+@media screen and (min-width: 375px) {
+    .card {
+        display: flex;
+        flex-direction: column;
+        width: 330px;
+        height: 416px;
+        background-size: cover;
+        padding: 256px 0 0 28px;
+        border-radius: 6px;
+    }
+
+    .card:not(:first-child) {
+        margin-top: 32px;
+    }
+
+    .filter__button {
+        border-radius: 20px;
+        border: inherit;
+        font-size: 16px;
+        line-height: 32px;
+        padding: 2px 22px 1px 16px;
+    }
+
+    .filter__button:hover {
+        background-color: rgb(252, 226, 191);
+    }
+
+    .card__title {
+        font-size: 40px;
+        line-height: 48px;
+        padding-top: 16px;
+    }
+
+    .card__select {
+        border: 4px solid #16CD53;
+    }
+
+}
+
+
+
+@media screen and (min-width: 1040px) {
+
+    .card {
+        width: 320px;
+    }
+
+    .card:nth-child(-n+3) {
+        margin-top: 0;
+    }
+
+    .card:not(:first-child):not(:nth-child(3n+4)) {
+        margin-left: 20px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+
+    .card {
+        width: 370px;
+    }
+
+    .card:nth-child(-n+3) {
+        margin-top: 0;
+    }
+
+    .card:not(:first-child):not(:nth-child(3n+4)) {
+        margin-left: 30px;
+    }
+}

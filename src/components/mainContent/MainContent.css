@@ -1,0 +1,123 @@
+@media screen and (min-width: 375px) {
+
+    .content {
+        width: 330px;
+        margin: 0 auto;
+    }
+
+    .content__nav {
+        display: flex;
+        padding-top: 32px;
+    }
+
+    .nav__select {
+        width: 100%;
+        height: 48px;
+        border: 1px solid #F3D1BF;
+        border-radius: 6px;
+        color: #391400;
+        font-size: 16px;
+    }
+
+    .nav__box {
+        display: none;
+    }
+
+    .content__product {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 48px;
+    }
+
+    .product__more {
+        margin: 48px 0;
+    }
+
+    .more__button {
+        font-size: 14px;
+        width: 170px;
+        height: 48px;
+        background-color: transparent;
+        color: #391400;
+        background-color: white;
+        border: 1px solid white;
+        border-radius: 6px;
+        box-shadow: -3px 0px 40px rgba(57, 57, 57, 0.1), 0px 0px 10px rgba(164, 164, 164, 0.056);
+    }
+
+    .select {
+        color: #16CD53;
+    }
+
+}
+
+@media screen and (min-width: 1040px) {
+
+    .content {
+        width: 1000px;
+        margin: 0 auto;
+    }
+
+    .content__nav {
+        padding-top: 80px;
+        justify-content: center;
+    }
+
+    .nav__select {
+        display: none;
+    }
+
+    .nav__box {
+        display: flex;
+        width: 564px;
+        justify-content: space-between;
+        font-size: 16px;
+        line-height: 32px;
+    }
+
+    .box__button{
+        color: #391400;
+        background: inherit;
+        border: inherit;
+    }
+
+    .content__product {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: 76px;
+    }
+
+    .product__cards {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .product__more {
+        margin-top: 80px;
+
+    }
+
+    .select {
+        color: #16CD53;
+    }
+
+}
+
+
+@media screen and (min-width: 1440px) {
+
+    .content {
+        width: 1170px;
+    }
+
+    .select {
+        color: #16CD53;
+    }
+
+}
