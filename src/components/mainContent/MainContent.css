@@ -80,6 +80,7 @@
         color: #391400;
         background: inherit;
         border: inherit;
+        cursor: pointer;
     }
 
     .content__product {

@@ -22,6 +22,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        cursor: pointer;
     }
 
     .logo__img {
@@ -84,6 +85,22 @@
         font-size: 16px;
     }
 
+    .navigation__about{
+        cursor: pointer;
+    }
+
+    .navigation__services{
+        cursor: pointer;
+    }
+
+    .navigation__pricing{
+        cursor: pointer;
+    }
+
+    .navigation__blog{
+        cursor: pointer;
+    }
+
     .nav__contact {
         display: block;
     }
@@ -96,6 +113,7 @@
         color: white;
         border: 1px solid #676877;
         border-radius: 6px;
+        cursor: pointer;
     }
 
     .header__about {
