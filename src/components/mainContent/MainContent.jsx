@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Card from '../card/Card'
 import Filter from '../filter/Filter'
 import './MainContent.css'
@@ -7,7 +7,7 @@ export default function MainContent(props) {
 
     const { metaData } = props;
 
-    const [data, setData] = useState(metaData);
+    const data = [...metaData];
     const [filterResult, setFilterResult] = useState(data);
 
     const [isSelectedAll, setIsSelectedAll] = useState(false)
@@ -15,6 +15,27 @@ export default function MainContent(props) {
     const [isSelectedBrand, setIsSelectedBrand] = useState(false)
     const [isSelectedIllus, setIsSelectedIllus] = useState(false)
     const [isSelectedMotion, setIsSelectedMotion] = useState(false)
+
+    // const cardsPerPage = 1
+    // let arrForHoldingCards = []
+    // const ref = useRef(cardsPerPage)
+
+    // const loopWithSlice = (start, end) => {
+    //     const slicedCards = data.slice(start, end)
+    //     arrForHoldingCards = arrForHoldingCards.concat(slicedCards)
+    //     setFilterResult(arrForHoldingCards)
+    // }
+
+    // useEffect(() => {
+    //     loopWithSlice(0, cardsPerPage)
+    // }, [])
+
+    // const handleLoadMore = () => {
+    //     loopWithSlice(ref.current, ref.current + cardsPerPage)
+    //     ref.current += cardsPerPage
+    //     console.log(filterResult)
+    // }
+
 
     const filterItems = (e) => {
 
@@ -43,10 +64,9 @@ export default function MainContent(props) {
     const deleteCard = (e) => {
         const id = e.target.getAttribute('id');
         setFilterResult(filterResult.filter(item => item.id !== id))
-        // console.log(id)
-        // console.log(filterResult)
-        // console.log(filterResult.filter(item => item.id === id))
     }
+
+
 
     return (
         <article className='content'>
@@ -63,11 +83,14 @@ export default function MainContent(props) {
             <main className='content__product'>
                 <div className='product__cards'>
                     {filterResult.map(card =>
-                        <Card data={card} param={filterItems} remove={deleteCard} key={card.id}/>
+                        <Card data={card} param={filterItems} remove={deleteCard} key={card.id} />
                     )}
                 </div>
                 <div className='product__more'>
-                    <button className='more__button'>
+                    <button
+                        className='more__button'
+                    // onClick={handleLoadMore}
+                    >
                         LOAD MORE
                     </button>
                 </div>
